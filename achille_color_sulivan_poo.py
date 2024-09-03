@@ -1,30 +1,41 @@
-from termcolor import cprint, colored
+from termcolor import colored
+class Coureur:
+    def __init__(self, nom, vitesse, position_initiale):
+        self.nom = nom
+        self.vitesse = vitesse
+        self.position = position_initiale
 
-class Calculateur:
-    def __init__(self, position_t=15, position_a=0, vitesse_t=1, vitesse_a=2):
-        self.position_t = position_t
-        self.position_a = position_a
-        self.vitesse_t = vitesse_t
-        self.vitesse_a = vitesse_a
+    def avancer(self, temps):
+        self.position += self.vitesse * temps
 
-        
+class Simulation:
+    def __init__(self, achille, tortue, iterations):
+        self.achille = achille
+        self.tortue = tortue
+        self.iterations = iterations
 
-def tortue_sul(n) : 
-    Vitesse_A = 2
-    Vitesse_T = 1
-    Position_A = 0
-    Position_T = 15
-    
-    for i in range (0, n):
-        temps_A = (Position_T-Position_A) / Vitesse_A
-        Position_A = Position_T
-        Position_T = Position_T + (Vitesse_T * temps_A)
-        Ecart = Position_T-Position_A
-        print(colored("Etape", "green", attrs=["bold"]), colored(i + 1, "green"))
-        print(colored("Voici la position d'Achille: ", "yellow"), colored(Position_A, "yellow"))
-        print(colored("Voici la position de la tortue: ", "magenta"), colored(Position_T, "magenta"))
-        print(colored("Ecart: ", "red", attrs=["bold"]), colored(Ecart, "red"))
+    def calculer_temps(self):
+        return (self.tortue.position - self.achille.position) / self.achille.vitesse
+
+    def run(self):
+        for i in range(self.iterations):
+            temps_A = self.calculer_temps()
+            self.achille.position = self.tortue.position
+            self.tortue.avancer(temps_A)
+            ecart = self.tortue.position - self.achille.position
+
+            self.afficher_etape(i + 1, ecart)
+
+    def afficher_etape(self, etape, ecart):
+        print(colored("Etape", "green", attrs=["bold"]), colored(etape, "green"))
+        print(colored(f"Voici la position d'{self.achille.nom}: ", "yellow"), colored(self.achille.position, "yellow"))
+        print(colored(f"Voici la position de la {self.tortue.nom}: ", "magenta"), colored(self.tortue.position, "magenta"))
+        print(colored("Ecart: ", "red", attrs=["bold"]), colored(ecart, "red"))
+
+achille = Coureur("Achille", vitesse=2, position_initiale=0)
+tortue = Coureur("Tortue", vitesse=1, position_initiale=15)
 
 n = int(input(colored("Entrez le nombre d’itération que vous voulez effectuer : ", "cyan", attrs=["bold"])))
 
-tortue_sul(n)
+simulation = Simulation(achille, tortue, n)
+simulation.run()
