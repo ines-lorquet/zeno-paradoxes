@@ -6,3 +6,9 @@ class Display_para:
         step.insert(pos_1, "1")
         step.insert(pos_2, "0")
         print("".join(step))
+        
+    def display_terminal_1(self,pos_1):
+        run = "_______________________________________"
+        step = list(run)
+        step.insert(pos_1, "1")
+        print("".join(step))
