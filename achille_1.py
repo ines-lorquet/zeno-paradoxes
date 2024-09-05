@@ -1,4 +1,4 @@
-from display import Display_para
+from print_terminal import Display_para
 
 
 class Paradoxe(Display_para):
