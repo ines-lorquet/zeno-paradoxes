@@ -2,6 +2,7 @@ import pygame
 import sys
 from fleche import FlecheSimulation
 
+
 class Game:
     def __init__(self):
         pygame.init()
@@ -11,11 +12,13 @@ class Game:
         pygame.display.set_caption("Paradoxe de la Flèche")
         self.clock = pygame.time.Clock()
         self.running = True
-        self.police_c1 = pygame.font.Font('GRECOromanLubedWrestling.ttf', 25)
+        self.police_c1 = pygame.font.Font("GRECOromanLubedWrestling.ttf", 25)
         self.black = (0, 0, 0)
         self.fps = 60
 
-        self.simulation = FlecheSimulation(target=500, position_arrow_initial=0, arrow_speed=5, number_stages=100)
+        self.simulation = FlecheSimulation(
+            target=500, position_arrow_initial=0, arrow_speed=5, number_stages=100
+        )
 
     def text_c1(self, text, color, x, y):
         text_surface = self.police_c1.render(text, True, color)
@@ -42,15 +45,21 @@ class Game:
                 self.running = False
 
     def draw(self):
-        self.img_back("Back", 'img/background.jpg')
+        self.img_back("Back", "img/background.jpg")
         self.text_c1("Paradoxe de la fleche", self.black, 260, 100)
-        self.image('img/target.png', 150, 200, 500, 190)
-        self.image('img/logo_grec.png', 100, 100, 100, 50)
+        self.image("img/target.png", 150, 200, 500, 190)
+        self.image("img/logo_grec.png", 100, 100, 100, 50)
 
         position_arrow, gap = self.simulation.avancer()
-        pygame.draw.line(self.screen, (0, 0, 0), (50, self.screen_height // 2), (50 + position_arrow, self.screen_height // 2), 5)
-        self.text_c1(f"Position fleche: {position_arrow}", self.black, 10, 370)
-        self.text_c1(f"Ecart avec la cible: {gap}", self.black, 10, 400)
+        pygame.draw.line(
+            self.screen,
+            (0, 0, 0),
+            (50, self.screen_height // 2),
+            (50 + position_arrow, self.screen_height // 2),
+            5,
+        )
+        self.text_c1(f"Arrow position: {position_arrow}", self.black, 10, 370)
+        self.text_c1(f"Deviation from target: {gap}", self.black, 10, 400)
 
         pygame.display.flip()
 
@@ -58,14 +67,13 @@ class Game:
         while self.running:
             self.handle_events()
             self.draw()
-            self.clock.tick(5)
+            self.clock.tick(30)
 
     def cleanup(self):
         pygame.quit()
         sys.exit()
 
-if __name__ == "__main__":
-    
-    game = Game()
-    game.run()
-    game.cleanup()
+
+game = Game()
+game.run()
+game.cleanup()
