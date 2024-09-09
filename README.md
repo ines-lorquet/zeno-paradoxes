@@ -32,17 +32,20 @@
 
 Installer la librairie nécessaire pour le bon fonctionnement du projet :
 
+- Cela permet d’ajouter de la couleur dans le terminal.
+
 ```sh
-pip install termcolor && pip upgrade termcolor
+pip install termcolor
+```
+```sh
+ pip upgrade termcolor
 ```
 
-- Cela permet d’ajouter de la couleur dans le terminal.
+- Cela permet d’ajouter une interface graphique.
 
 ```sh
 pip install pygame
 ```
-
-- Cela permet d’ajouter une interface graphique.
 
 ## Contexte
 
