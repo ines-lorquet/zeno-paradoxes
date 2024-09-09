@@ -6,7 +6,7 @@ class ArrowSimulation:
         self.number_stages = number_stages
         self.current_step = 0
 
-    def avancer(self):
+    def step_arrow(self):
         if self.current_step < self.number_stages:
             self.position_arrow += self.arrow_speed
             self.current_step += 1

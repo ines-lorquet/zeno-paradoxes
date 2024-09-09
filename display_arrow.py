@@ -58,7 +58,7 @@ class Game:
         self.image("img/target.png", 150, 200, 500, 190)
         self.image("img/logo_grec.png", 100, 100, 100, 50)
 
-        position_arrow, gap = self.simulation.avancer()
+        position_arrow, gap = self.simulation.step_arrow()
 
         if position_arrow < 100:
             self.draw_arrow(50, position_arrow)
