@@ -1,4 +1,4 @@
-class FlecheSimulation:
+class ArrowSimulation:
     def __init__(self, target, position_arrow_initial, arrow_speed, number_stages):
         self.target = target
         self.position_arrow = position_arrow_initial

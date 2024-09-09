@@ -1,6 +1,6 @@
 import pygame
 import sys
-from fleche import FlecheSimulation
+from arrow import ArrowSimulation
 
 
 class Game:
@@ -9,14 +9,14 @@ class Game:
         self.screen_width = 700
         self.screen_height = 480
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
-        pygame.display.set_caption("Paradoxe de la Flèche")
+        pygame.display.set_caption("The Arrow Paradox")
         self.clock = pygame.time.Clock()
         self.running = True
         self.police_c1 = pygame.font.Font("GRECOromanLubedWrestling.ttf", 25)
         self.black = (0, 0, 0)
         self.fps = 60
 
-        self.simulation = FlecheSimulation(
+        self.simulation = ArrowSimulation(
             target=500, position_arrow_initial=0, arrow_speed=5, number_stages=100
         )
 
@@ -44,20 +44,39 @@ class Game:
             if event.type == pygame.QUIT:
                 self.running = False
 
+    def draw_arrow(self, position_x, position=100):
+        pygame.draw.line(
+            self.screen,
+            (0, 0, 0),
+            (position_x, self.screen_height // 2),
+            (50 + position, self.screen_height // 2),
+            5,
+        )
+
     def draw(self):
         self.img_back("Back", "img/background.jpg")
-        self.text_c1("Paradoxe de la fleche", self.black, 260, 100)
+        self.text_c1("The Arrow Paradox", self.black, 260, 100)
         self.image("img/target.png", 150, 200, 500, 190)
         self.image("img/logo_grec.png", 100, 100, 100, 50)
 
         position_arrow, gap = self.simulation.avancer()
-        pygame.draw.line(
-            self.screen,
-            (0, 0, 0),
-            (50, self.screen_height // 2),
-            (50 + position_arrow, self.screen_height // 2),
-            5,
-        )
+
+        if position_arrow < 100:
+            self.draw_arrow(50, position_arrow)
+
+        else:
+            self.draw_arrow(50)
+
+        if position_arrow > 200 and position_arrow < 300:
+            self.draw_arrow(250, position_arrow)
+
+        elif position_arrow > 300:
+            self.draw_arrow(250, 300)
+
+        if position_arrow > 450:
+
+            self.draw_arrow(450, position_arrow)
+
         self.text_c1(f"Arrow position: {position_arrow}", self.black, 10, 370)
         self.text_c1(f"Deviation from target: {gap}", self.black, 10, 400)
 
