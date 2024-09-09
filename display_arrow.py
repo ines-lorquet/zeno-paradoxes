@@ -14,7 +14,6 @@ class Game:
         self.running = True
         self.police_c1 = pygame.font.Font("GRECOromanLubedWrestling.ttf", 25)
         self.black = (0, 0, 0)
-        self.fps = 60
 
         self.simulation = ArrowSimulation(
             target=500, position_arrow_initial=0, arrow_speed=5, number_stages=100
@@ -47,7 +46,7 @@ class Game:
     def draw_arrow(self, position_x, position=100):
         pygame.draw.line(
             self.screen,
-            (0, 0, 0),
+            self.black,
             (position_x, self.screen_height // 2),
             (50 + position, self.screen_height // 2),
             5,
