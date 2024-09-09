@@ -5,6 +5,6 @@ for i in range(10):
     throw = (position_tree-position_rock)/2
     position_rock = position_rock + throw
     
-    print("Etape", (i + 1))
-    print("Position de la pierre : ", position_rock)
-    print("Ecart : ",position_tree - position_rock)
+    print("Step", (i + 1))
+    print("Rock position: ", position_rock)
+    print("Difference : ",position_tree - position_rock)
