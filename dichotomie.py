@@ -1,9 +1,10 @@
-Arbre = 8
-Pierre = 0
+position_arbre = 8
+position_pierre = 0
 
 for i in range(10):
-    Lancer = (Arbre-Pierre)/2
-    Pierre = Pierre + Lancer
+    lancer = (position_arbre-position_pierre)/2
+    position_pierre = position_pierre + lancer
+    
     print("Etape", (i + 1))
-    print("Position pierre : ", Pierre)
-    print("Ecart: ",Arbre - Pierre )
+    print("Position pierre : ", position_pierre)
+    print("Ecart : ",position_arbre - position_pierre)
