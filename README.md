@@ -9,7 +9,7 @@
 
 ## L'équipe
 
-3 étudiants en 2ère année de `Bachelor IT spécialité Intelligence Artificielle` à [La Plateforme\_](https://laplateforme.io/) à Marseille, voici le sujet : (https://drive.google.com/file/d/1UjvTcKDJWwzBoGsoDOUiJcNP0QW2sj08/view?usp=sharing)
+3 étudiants en 2ère année de `Bachelor IT spécialité Intelligence Artificielle` à [La Plateforme\_](https://laplateforme.io/) à Marseille, voici le sujet : [Sujet\_](https://drive.google.com/file/d/1UjvTcKDJWwzBoGsoDOUiJcNP0QW2sj08/view?usp=sharing)
 
 - Antoine Gobbe
   <a href="https://github.com/NovaStarmax">
